@@ -1,14 +1,38 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Products</h1>
 
-<div id="products">
-  <% @products.each do |product| %>
-    <%= render product %>
-    <p>
-      <%= link_to "Show this product", product %>
-    </p>
-  <% end %>
-</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Currency</th>
+      <th scope="col">Price</th>
+      <th scope="col">Stripe Product Id</th>
+      <th scope="col">Stripe Price Id</th>
+      <th scope="col">Stripe Currency</th>
+      <th scope="col">Stripe Price</th>
+      <th scope="col">Shopping cart</th>
+      <th scope="col">Sales count</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
 
-<%= link_to "New product", new_product_path %>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.currency %></td>
+        <td><%= product.price_cents %></td>
+        <td><%= product.stripe_product_id %></td>
+        <td><%= product.stripe_price_id %></td>
+        <td><%= product.sales_count %></td>
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Product', new_product_path %>
+<hr>
