@@ -13,6 +13,12 @@
 
   <body class="container">
   <%= link_to "Product", products_path %>
+  <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
   <hr />
     <%= yield %>
   </body>

@@ -74,5 +74,7 @@ group :test do
   gem 'webdrivers'
 end
 
+# Application specific gems
 gem 'money-rails'
 gem 'stripe'
+gem 'devise'
