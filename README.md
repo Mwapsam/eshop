@@ -1,24 +1,18 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# To secure your Stripe credentials
 
-Things you may want to cover:
+```$env:EDITOR="notepad"```
 
-* Ruby version
+```bundle exec rails credentials:edit```
 
-* System dependencies
+## In the Editor type;
+    stripe:
+        secret: your_secret_key
+        public: your_public_key
 
-* Configuration
+Save and exit the editor
 
-* Database creation
+## To access your stripe credentials
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+`Rails.application.credentials[:stripe][:secret]`
+`Rails.application.credentials[:stripe][:public]`
