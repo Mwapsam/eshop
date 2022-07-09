@@ -19,7 +19,7 @@ class Product < ApplicationRecord
   # create stripe product and assign to this product
   after_create do
     product = Stripe::Product.create(name: name)
-    price = Stripe::Price.create(product: product, unit_amount: self.price, currency: self.currency)
+    price = Stripe::Price.create(product: product, unit_amount: self.price, currency: currency)
     update(stripe_product_id: product.id, stripe_price_id: price.id)
   end
 end
