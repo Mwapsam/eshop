@@ -15,6 +15,7 @@ Save and exit the editor
 ## To access your stripe credentials
 
 `Rails.application.credentials[:stripe][:secret]`
+
 `Rails.application.credentials[:stripe][:public]`
 
 # Set master.key in production (heroku):
@@ -26,3 +27,12 @@ heroku config:set RAILS_MASTER_KEY=`cat config/master.key`
 heroku config:set RAILS_MASTER_KEY=`cat config/credentials/production.key`
 
 In config/environments/production.rb uncomment `config.require_master_key = true`
+# Deploy to heroku
+
+`git add .`
+
+`git commit -am "staging"`
+
+`git push heroku master`
+
+`heroku run rails db:migrate`
