@@ -75,6 +75,6 @@ group :test do
 end
 
 # Application specific gems
+gem 'devise'
 gem 'money-rails'
 gem 'stripe'
-gem 'devise'
