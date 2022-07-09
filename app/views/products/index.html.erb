@@ -26,7 +26,7 @@
         <td><%= product.stripe_price_id %></td>
         <td><%= product.sales_count %></td>
         <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to "Buy now!", checkout_create_path, remote: true, params: {id: product.id} %></td>
       </tr>
     <% end %>
   </tbody>
