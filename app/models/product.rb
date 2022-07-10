@@ -27,7 +27,7 @@ class Product < ApplicationRecord
   after_update :create_and_assign_new_stripe_price, if: :saved_change_to_currency?
 
   def create_and_assign_new_stripe_price
-    price = Stripe::Price.create(product: self.stripe_product_id, unit_amount: self.price, currency: self.currency)
+    price = Stripe::Price.create(product: stripe_product_id, unit_amount: self.price, currency: currency)
     update(stripe_price_id: price.id)
   end
 end
