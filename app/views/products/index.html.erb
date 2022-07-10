@@ -8,6 +8,7 @@
       <th scope="col">Price</th>
       <th scope="col">Stripe Product Id</th>
       <th scope="col">Stripe Price Id</th>
+      <th scope="col">Shopping cart</th>
       <th scope="col">Sales count</th>
       <th colspan="2"></th>
     </tr>
@@ -21,6 +22,13 @@
         <td><%= product.price_cents %></td>
         <td><%= product.stripe_product_id %></td>
         <td><%= product.stripe_price_id %></td>
+        <td>
+          <% if @cart.include?(product) %>
+            <%= button_to "Remove from cart", remove_from_cart_path(product), method: :delete %>
+          <% else %>
+            <%= button_to "Add to cart", add_to_cart_path(product) %>
+          <% end %>
+        </td>
         <td><%= product.sales_count %></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= button_to "Buy now!", checkout_create_path, remote: true, params: {id: product.id} %></td>

@@ -30,6 +30,15 @@
 
           <ul class="navbar-nav mb-2 mb-lg-0">
             <% if user_signed_in? %>
+              <h1>Shopping cart</h1>
+              Items:
+              <%= @cart.size %>
+              <br>
+              <% @cart.each do |cart_item| %>
+                <br>
+                <%= cart_item.name %>
+                <%= link_to "x", remove_from_cart_path(cart_item), method: :delete %>
+              <% end %>
               <%= current_user.stripe_customer_id %>
               <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
             <% else %>

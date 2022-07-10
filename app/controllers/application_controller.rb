@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+  protect_from_forgery prepend: true
+
   before_action :initialize_session
   before_action :load_cart
 
@@ -10,6 +12,6 @@ class ApplicationController < ActionController::Base
   end
 
   def load_cart
-    @cart = Product.where(id: session[:cart])
+    @cart = Product.find(session[:cart])
   end
 end
